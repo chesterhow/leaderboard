@@ -7,6 +7,10 @@ Meteor.methods({
       name: '',
       time: '',
     });
+  },
+
+  'listings.remove': function(listing) {
+    return Listings.remove(listing);
   }
 });
 
