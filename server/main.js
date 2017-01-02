@@ -1,5 +1,8 @@
 import { Meteor } from 'meteor/meteor';
+import { Listings } from '../imports/collections/listings';
 
 Meteor.startup(() => {
-  // code to run on server at startup
+  Meteor.publish('listings', function() {
+    return Listings.find({});
+  })
 });

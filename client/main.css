@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #EEE;
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  background-color: #FFF;
+  height: 50px;
+  width: 100%;
+}
+
+.nav-container {
+  height: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 80%;
+}
