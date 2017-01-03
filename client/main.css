@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700');
+
 * {
   box-sizing: border-box;
+  color: #2A2A2A;
+  font-family: 'Source Sans Pro';
 }
 
 body {
@@ -8,17 +12,100 @@ body {
   padding: 0;
 }
 
-.nav {
+/* Header */
+.header {
   background-color: #FFF;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   height: 50px;
   width: 100%;
 }
 
-.nav-container {
+.header-container {
   height: 100%;
   margin: 0 auto;
   max-width: 1200px;
+  padding: 0 15px;
   width: 80%;
+}
+
+.header-title {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 1.8em;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header-button {
+  background-color: #FFF;
+  border: 2px solid #2A2A2A;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+  font-size: 1em;
+  padding: 3px 40px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.2s ease-in;
+}
+
+.header-button:hover {
+  background-color: #2A2A2A;
+  color: #FFF;
+}
+
+/* Leaderboard */
+.leaderboard {
+  background-color: #FFF;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  margin: 20px auto;
+  max-width: 1200px;
+  width: 80%;
+}
+
+.table-headings {
+  background-color: #F5F5F5;
+  border-bottom: 1px solid #CDCDCD;
+  padding: 15px;
+}
+
+.table-heading {
+  color: #808080;
+  display: inline-block;
+}
+
+.table-rank-col {
+  width: 20%;
+}
+
+.table-name-col {
+  width: 50%;
+}
+
+.table-time-col {
+  width: 25%;
+}
+
+.table-remove-col {
+  width: 5%;
+}
+
+.table-rows {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.table-row {
+  border-bottom: 1px dashed #CDCDCD;
+  padding: 20px 15px;
+}
+
+.table-col {
+  display: inline-block;
 }
 
 .add-form-overlay {

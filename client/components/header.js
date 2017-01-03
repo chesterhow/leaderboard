@@ -20,10 +20,14 @@ class Header extends Component {
 
   render() {
     return (
-      <nav className="nav">
-        <div className="nav-container">
-          <span>Leaderboard</span>
-          <input type="button" value="ADD" onClick={this.toggleForm} />
+      <div className="header">
+        <div className="header-container">
+          <p className="header-title">Leaderboard</p>
+          <input
+            className="header-button"
+            type="button"
+            value="ADD"
+            onClick={this.toggleForm} />
         </div>
         {(this.state.showAddForm) ? (
           <AddForm
@@ -31,7 +35,7 @@ class Header extends Component {
             addListing={this.addListing}
           />
         ) : null}
-      </nav>
+      </div>
     );
   }
 }
