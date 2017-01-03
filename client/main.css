@@ -60,12 +60,11 @@ body {
 .header-button {
   background-color: #FFF;
   border: 2px solid #2A2A2A;
-  border-radius: 5px;
   color: #2A2A2A;
   cursor: pointer;
   float: right;
   font-size: 1em;
-  padding: 3px 40px;
+  padding: 5px 0;
   transition: all 0.2s ease-in;
 }
 
@@ -118,6 +117,7 @@ body {
 }
 
 .remove-image {
+  cursor: pointer;
   height: 100%;
   float: right;
 }
@@ -178,7 +178,7 @@ body {
 
 /* Confirmation Box*/
 .confirmation-box {
-  background-color: #FFF;
+  background-color: #EEE;
   border-radius: 3px;
   height: 50%;
   left: 50%;
@@ -213,22 +213,80 @@ body {
   background-color: #B8B8BB;
 }
 
-
-
-
-
 /* Add Form*/
-.add-form-overlay {
-  background-color: rgba(30,30,30,0.9);
-  height: 100vh;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100vw;
+.add-form-box {
+  background-color: #EEE;
+  border-radius: 3px;
+  height: 50%;
+  left: 50%;
+  max-height: 350px;
+  max-width: 400px;
+  padding: 25px;
+  position: relative;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
 }
 
-.add-form {
+.close-image {
+  cursor: pointer;
+  height: 1.4em;
+  float: right;
+  vertical-align: top;
+}
+
+.form-title {
+  display: inline-block;
+  margin: 0 0 20px;
+  vertical-align: top;
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  color: #727272;
+  display: inline-block;
+  margin: 0;
+  width: 20%;
+}
+
+.form-textbox {
   background-color: #FFF;
-  height: 50%;
-  width: 50%;
+  border: 1px solid #B8B8BB;
+  border-radius: 3px;
+  font-size: 1em;
+  padding: 5px 5px;
+  vertical-align: middle;
+}
+
+.form-textbox-error {
+  border-color: #F46054;
+}
+
+.form-name-textbox {
+  width: 80%;
+}
+
+.form-time-textbox {
+  text-align: center;
+  width: 40px;
+}
+
+.form-bottom {
+  bottom: 25px;
+  position: absolute;
+  width: calc(100% - 50px);
+}
+
+.form-error-message {
+  color: #F46054;
+  font-size: 0.9em;
+  text-align: right;
+}
+
+.confirm-button {
+  background-color: #8AC5C6;
+  width: 100%;
 }
