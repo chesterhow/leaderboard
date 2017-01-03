@@ -5,12 +5,44 @@ import { Listings } from '../../imports/collections/listings';
 import Listing from './listing';
 
 class Leaderboard extends Component {
-  onListingRemove(listing) {
-    Meteor.call('listings.remove', listing);
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      confirmation: false,
+      listingToRemove: {},
+    };
+
+    this.toggleConfirmation = this.toggleConfirmation.bind(this);
+    this.removeListing = this.removeListing.bind(this);
+    this.onRemoveClick = this.onRemoveClick.bind(this);
+  }
+
+  toggleConfirmation() {
+    this.setState({ confirmation: !this.state.confirmation });
+  }
+
+  removeListing() {
+    Meteor.call('listings.remove', this.state.listingToRemove);
+
+    this.toggleConfirmation();
+    this.setState({ listingToRemove: {} });
+  }
+
+  onRemoveClick(listing) {
+    this.toggleConfirmation();
+    this.setState({ listingToRemove: listing });
   }
 
   renderListings() {
     const { listings } = this.props;
+
+    if (listings.length === 0) {
+      return (
+        <li className="table-empty-row">No listings added</li>
+      );
+    }
+
     listings.sort((a, b) => {
       return a.time - b.time;
     });
@@ -25,7 +57,7 @@ class Leaderboard extends Component {
           key={listing._id}
           listing={listing}
           rank={rank}
-          removeListing={this.onListingRemove}
+          removeListing={this.onRemoveClick}
         />
       );
     });
@@ -43,6 +75,27 @@ class Leaderboard extends Component {
         <ul className="table-rows">
           {this.renderListings()}
         </ul>
+        {(this.state.confirmation) ? (
+          <div className="overlay">
+            <div className="confirmation-box">
+              <p>Remove this listing?</p>
+              <div className="confirmation-buttons">
+                <input
+                  className="button remove-button"
+                  type="button"
+                  value="Remove"
+                  onClick={this.removeListing}
+                />
+                <input
+                  className="button cancel-button"
+                  type="button"
+                  value="Cancel"
+                  onClick={this.toggleConfirmation}
+                />
+              </div>
+            </div>
+          </div>
+        ) : null}
       </div>
     );
   }

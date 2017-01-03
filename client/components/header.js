@@ -22,12 +22,17 @@ class Header extends Component {
     return (
       <div className="header">
         <div className="header-container">
-          <p className="header-title">Leaderboard</p>
-          <input
-            className="header-button"
-            type="button"
-            value="ADD"
-            onClick={this.toggleForm} />
+          <div className="header-box">
+            <p className="header-title">Leaderboard</p>
+          </div>
+          <div className="header-box">
+            <input
+              className="button header-button"
+              type="button"
+              value="ADD"
+              onClick={this.toggleForm}
+            />
+          </div>
         </div>
         {(this.state.showAddForm) ? (
           <AddForm
