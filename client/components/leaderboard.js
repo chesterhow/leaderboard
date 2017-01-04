@@ -14,9 +14,19 @@ class Leaderboard extends Component {
       listingToRemove: {},
     };
 
+    this.togglePage = this.togglePage.bind(this);
     this.toggleConfirmation = this.toggleConfirmation.bind(this);
     this.removeListing = this.removeListing.bind(this);
     this.onRemoveClick = this.onRemoveClick.bind(this);
+  }
+
+  togglePage(change) {
+    const { page } = this.state;
+    const { listings } = this.props;
+    const nextPage = page + change;
+    if (nextPage > 0 && nextPage < (listings.length / 10) + 1) {
+      this.setState({ page: nextPage });
+    }
   }
 
   toggleConfirmation() {
@@ -117,6 +127,18 @@ class Leaderboard extends Component {
           <ul className="table-rows">
             {this.renderListings()}
           </ul>
+          <div className="pagination-arrows">
+            <img
+              src="images/arrow.svg"
+              className="pagination-button pagination-left-button"
+              onClick={() => this.togglePage(-1)}
+            />
+            <img
+              src="images/arrow.svg"
+              className="pagination-button pagination-right-button"
+              onClick={() => this.togglePage(1)}
+            />
+          </div>
         </div>
 
         {(this.state.confirmation) ? (

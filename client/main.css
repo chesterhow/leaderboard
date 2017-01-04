@@ -79,6 +79,7 @@ body {
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   margin: 20px auto;
   max-width: 1200px;
+  position: relative;
   width: 90%;
 }
 
@@ -164,6 +165,37 @@ body {
   letter-spacing: .2px;
   padding: 50px 25px;
   text-align: center;
+}
+
+.pagination-arrows {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 100px);
+}
+
+.pagination-button {
+  border-radius: 50px;
+  cursor: pointer;
+  height: 40px;
+  padding: 10px;
+  position: absolute;
+  transition: all 0.2s ease;
+  width: 40px;
+}
+
+.pagination-button:hover {
+  background-color: #FFF;
+}
+
+.pagination-left-button {
+  left: 0;
+}
+
+.pagination-right-button {
+  transform: rotate(180deg);
+  right: 0;
 }
 
 /* Overlay */
