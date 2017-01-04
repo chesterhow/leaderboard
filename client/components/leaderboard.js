@@ -141,6 +141,11 @@ class Leaderboard extends Component {
           </div>
         </div>
 
+        <div className="overflow">
+          <p>A project by</p>
+          <img src="images/overflow-logo.png" className="overflow-logo" />
+        </div>
+
         {(this.state.confirmation) ? (
           <div className="overlay">
             <div className="confirmation-box">
