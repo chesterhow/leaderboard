@@ -17,7 +17,7 @@ Meteor.methods({
 
   'listings.remove'(listing) {
     return Listings.remove(listing);
-  }
+  },
 });
 
 export const Listings = new Mongo.Collection('listings');

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const Listing = ({ rank, listing, removeListing }) => {
+const Listing = ({ rank, listing, hideBorder, removeListing }) => {
   const { time } = listing;
   const formattedTime = `${time.substring(0, 2)}:${time.substring(2, 4)}:${time.substring(4, 6)}`;
   let className = "table-row";
@@ -15,6 +15,10 @@ const Listing = ({ rank, listing, removeListing }) => {
     case 3:
       className += " table-third-row";
       break;
+  }
+
+  if (hideBorder) {
+    className += " table-top-row";
   }
 
   return (
@@ -38,6 +42,7 @@ const Listing = ({ rank, listing, removeListing }) => {
 Listing.propTypes = {
   rank: PropTypes.number,
   listing: PropTypes.object,
+  hideBorder: PropTypes.bool,
   removeListing: PropTypes.func,
 };
 

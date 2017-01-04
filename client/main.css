@@ -74,7 +74,7 @@ body {
 }
 
 /* Leaderboard */
-.leaderboard {
+.container {
   background-color: #FFF;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   margin: 20px auto;
@@ -139,7 +139,7 @@ body {
   border-radius: 5px;
 }
 
-.table-first-row {
+.table-top-row {
   border-top: 0;
 }
 

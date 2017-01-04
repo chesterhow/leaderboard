@@ -9,6 +9,7 @@ class Leaderboard extends Component {
     super(props);
 
     this.state = {
+      page: 1,
       confirmation: false,
       listingToRemove: {},
     };
@@ -36,45 +37,88 @@ class Leaderboard extends Component {
 
   renderListings() {
     const { listings } = this.props;
+    const { page } = this.state;
+    const lastIndex = page * 10;
+    const firstIndex = lastIndex - 10;
+    const currPageListings = listings.slice(firstIndex, lastIndex);
 
-    if (listings.length === 0) {
+    if (currPageListings.length === 0) {
       return (
         <li className="table-empty-row">No listings added</li>
       );
     }
 
-    listings.sort((a, b) => {
-      return a.time - b.time;
-    });
+    let rank = page * 10 - 10;
+    let hideBorder = false;
 
-    let rank = 0;
-
-    return listings.map(listing => {
+    return currPageListings.map(listing => {
       rank++;
+      hideBorder = false;
+
+      if (rank % 10 === 1) {
+        hideBorder = true;
+      }
 
       return (
         <Listing
           key={listing._id}
-          listing={listing}
           rank={rank}
+          listing={listing}
+          hideBorder={hideBorder}
           removeListing={this.onRemoveClick}
         />
       );
     });
   }
 
+  renderLatestListing() {
+    const { latestListing, listings } = this.props;
+
+    if (listings.length > 0) {
+      if (latestListing) {
+        let rank = 0;
+
+        for (let i = 0; i < listings.length; i++) {
+          if (listings[i]._id === latestListing._id) {
+            rank = i + 1;
+          }
+        }
+
+        return (
+          <Listing
+            hideBorder
+            rank={rank}
+            listing={latestListing}
+            removeListing={this.onRemoveClick}
+          />
+        );
+      }
+    }
+  }
+
   render() {
-    console.log(this.props.listings);
     return (
-      <div className="leaderboard">
-        <div className="table-headings">
-          <div className="table-heading table-rank-col">Rank</div>
-          <div className="table-heading table-name-col">Name</div>
-          <div className="table-heading table-time-col">Time</div>
+      <div>
+        <div className="container">
+          <div className="table-headings">
+            <div className="table-heading">Latest</div>
+          </div>
+          <ul className="table-rows">
+            {this.renderLatestListing()}
+          </ul>
         </div>
-        <ul className="table-rows">
-          {this.renderListings()}
-        </ul>
+
+        <div className="container">
+          <div className="table-headings">
+            <div className="table-heading table-rank-col">Rank</div>
+            <div className="table-heading table-name-col">Name</div>
+            <div className="table-heading table-time-col">Time</div>
+          </div>
+          <ul className="table-rows">
+            {this.renderListings()}
+          </ul>
+        </div>
+
         {(this.state.confirmation) ? (
           <div className="overlay">
             <div className="confirmation-box">
@@ -101,8 +145,11 @@ class Leaderboard extends Component {
   }
 }
 
-export default createContainer(() => {
+export default createContainer((props) => {
   Meteor.subscribe('listings');
 
-  return { listings: Listings.find({}).fetch() };
+  return {
+    latestListing: Listings.findOne({}, { sort: { createdAt: -1, limit: 1 }}),
+    listings: Listings.find({}, { sort: { time: 1 } }).fetch(),
+  };
 }, Leaderboard);
