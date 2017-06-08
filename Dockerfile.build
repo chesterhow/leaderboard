@@ -1,0 +1,12 @@
+FROM node:6.10-wheezy
+
+ENV METEOR_ALLOW_SUPERUSER=true
+
+RUN curl https://install.meteor.com/ | sh
+
+RUN mkdir /home/leaderboard
+COPY . /home/leaderboard/
+WORKDIR /home/leaderboard
+
+RUN yarn 
+RUN meteor build ../output
