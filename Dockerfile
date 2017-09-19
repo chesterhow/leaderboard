@@ -1,3 +1,3 @@
 FROM jshimko/meteor-launchpad:latest
 
-EXPOSE 3000
+ENV PORT 5000
