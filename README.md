@@ -1,5 +1,7 @@
 # leaderboard
 
+[![Build Status](https://travis-ci.org/chesterhow/leaderboard.svg?branch=master)](https://travis-ci.org/chesterhow/leaderboard)
+
 A leaderboard for ICT Open House 2017
 
 ## Deployment
