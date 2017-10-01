@@ -12,6 +12,6 @@ before_deploy:
 deploy:
   provider: script
   script: "./deploy.sh"
-  on: ci-deploy
+  on: master
 addons:
   ssh_known_hosts: leaderboard.chester.how
